@@ -1,4 +1,7 @@
+import java.util.Random;
+
 public class Monstruo {
+    Random rand = new Random();
     private String nombre;
     private String tipo;
     private int vida;
@@ -46,11 +49,26 @@ public class Monstruo {
 
     public String recivirDaño(int poder){//proximamente pedir tipo para multiplicador
         System.out.println(poder);
-        vida = vida-poder;//Proximamente tener en cuenta la defensa :v
-        if (vida <= 0) {
-            return "El enemigo ha caido";
+        int vidaquitada = 0;
+        String ataqueCrit = "";
+        System.out.println(nombre+ " vida: "+ vida);
+        if (rand.nextInt(10)==1) {
+            vidaquitada = defensa-2*(poder);    
+            ataqueCrit = "ATAQUE CRITICO    ";        
         }else{
-            return "El enemigo ha sido dañado";
+            vidaquitada = defensa-(poder);            
+        }
+        if (vidaquitada >= 0) {
+            return ataqueCrit+"La defensa del enemigo neutralizo el ataque";
+        }else{
+            System.out.println("vida: "+ vida);
+            System.out.println(" vida quitada "+ vidaquitada);
+            vida = vida+vidaquitada;            
+        }
+        if (vida <= 0) {
+            return ataqueCrit+"El enemigo ha caido";
+        }else{
+            return ataqueCrit+"El enemigo ha sido dañado";
         }
     }
 

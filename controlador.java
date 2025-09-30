@@ -114,6 +114,7 @@ public class controlador {
 
     private List<Habilidades> habilidadesPlayer;
 
+
     public void crearJugador(String nombre) {
 
         Random rand = new Random();
@@ -129,13 +130,13 @@ public class controlador {
         Clase rol = new Clase(nombresClases[claseganada], vidaClases[claseganada], dañoClases[claseganada],
                 defensaClases[claseganada], manaClases[claseganada], habilidadesPlayer);
         if (jugador1 == null) {
-            jugador1 = new Jugador(nombre, 5, 5, 5, 0, rol);
+            jugador1 = new Jugador(nombre, 5*vidaClases[claseganada], 5*defensaClases[claseganada], 5*dañoClases[claseganada],5+(3*manaClases[claseganada]), 0, rol);
         } else if (jugador2 == null) {
-            jugador2 = new Jugador(nombre, 5, 5, 5, 0, rol);
+            jugador2 = new Jugador(nombre, 5*vidaClases[claseganada], 5*defensaClases[claseganada], 5*dañoClases[claseganada],5+(3*manaClases[claseganada]), 0, rol);
         } else if (jugador3 == null) {
-            jugador3 = new Jugador(nombre, 5, 5, 5, 0, rol);
+            jugador3 = new Jugador(nombre, 5*vidaClases[claseganada], 5*defensaClases[claseganada], 5*dañoClases[claseganada],5+(3*manaClases[claseganada]), 0, rol);
         } else if (jugador4 == null) {
-            jugador4 = new Jugador(nombre, 5, 5, 5, 0, rol);
+            jugador4 = new Jugador(nombre, 5*vidaClases[claseganada], 5*defensaClases[claseganada], 5*dañoClases[claseganada],5+(3*manaClases[claseganada]), 0, rol);
         }
     }
 

@@ -3,15 +3,17 @@ public class Jugador {
     private int vida;
     private int defensa;
     private int ataque;
+    private int mana;
     private int experiencia;
     private Clase rol;
     private Objetos objetoEquipado;
 
-    public Jugador(String nombre, int vida, int defensa, int ataque, int experiencia, Clase rol) {
+    public Jugador(String nombre, int vida, int defensa, int ataque,int mana, int experiencia, Clase rol) {
         this.nombre = nombre;
         this.vida = vida;
         this.defensa = defensa;
         this.ataque = ataque;
+        this.mana = mana;
         this.experiencia = experiencia;
         this.rol = rol;
     }
@@ -47,6 +49,13 @@ public class Jugador {
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
 
     public int getExperiencia() {
         return experiencia;
@@ -65,7 +74,10 @@ public class Jugador {
     }
 
     public int calcularAtaque(int skill){
-        int poderAtaque = (int) Math.round(1 + ((ataque * rol.getMultiplicadorDaño()) * (rol.getHabilidades().get(skill).getPoder() * 0.0012)));
+        int poderAtaque = (int) Math.round(1 + (ataque * (rol.getHabilidades().get(skill).getPoder() * 0.008)));
+        System.out.println("ATAQUE PLANO " + ataque);
+        System.out.println("Habilidad "+ rol.getHabilidades().get(skill).getPoder() * 0.005);
+        System.out.println("DAÑO: "+poderAtaque);
         return poderAtaque;//45 a 15 de ataque por ataque y clase se multiplica por la potencia por un 1.2%
     }
 }

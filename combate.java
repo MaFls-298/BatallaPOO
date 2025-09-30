@@ -61,11 +61,11 @@ public class combate {
                         System.out.println(control.verEquipo(i+1).getNombre());
                         System.out.println("Rol: "+ 
                         (control.verEquipo(i+1).getRol().getNombre())+" Vida: "+
-                        (control.verEquipo(i+1).getVida()*control.verEquipo(i+1).getRol().getMultiplicadorVida())+" Ataque: "+
-                        (control.verEquipo(i+1).getAtaque()*control.verEquipo(i+1).getRol().getMultiplicadorDaño())+" defensa: "+
-                        (control.verEquipo(i+1).getDefensa()*control.verEquipo(i+1).getRol().getMultiplicadorDefensa())+" Mana: "+
-                        (5+3*control.verEquipo(i+1).getRol().getCantidadMana())+" EXP: "+
-                        (control.verEquipo(i+1).getExperiencia()));
+                        control.verEquipo(i+1).getVida()+" Ataque: "+
+                        control.verEquipo(i+1).getAtaque()+" defensa: "+
+                        control.verEquipo(i+1).getDefensa()+" Mana: "+
+                        control.verEquipo(i+1).getRol().getCantidadMana()+" EXP: "+
+                        control.verEquipo(i+1).getExperiencia());
                         System.out.println("Skills: ");
                         for (int j = 0; j < control.verEquipo(i+1).getRol().getHabilidades().size(); j++) {
                             System.out.print(""+control.verEquipo(i+1).getRol().getHabilidades().get(j).getNombre()+" tipo:"+
@@ -121,7 +121,7 @@ public class combate {
                     }
                     
 
-                    System.out.println(control.atacar(objetivo, i+1,objetivoAtaque)); 
+                    System.out.println(control.atacar(objetivo, i+1,objetivoAtaque-1)); 
                     
                 }
                     break;
