@@ -147,20 +147,20 @@ public class controlador {
 
         int totalPeso = 0;
 
-        for (int p : pesos){
+        for (int p : pesos) {
             totalPeso += p;
         }
-        
-        if (false /*piso % 5 == 0*/) {
-            
-        } else if (false /*piso % 5 == 1*/) {
-            
+
+        if (false /* piso % 5 == 0 */) {
+
+        } else if (false /* piso % 5 == 1 */) {
+
         } else {
             int numMon = 2 + rand.nextInt(2);
             for (int i = 0; i < 5; i++) {
-                
+
                 int r = rand.nextInt(totalPeso);
-                
+
                 int acumulado = 0;
                 int elegido = 7;
 
@@ -173,32 +173,37 @@ public class controlador {
                 }
 
                 if (enemigo1 == null) {
-                    enemigo1 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)], tipos[elegido][0][0],
-                    2 + rand.nextInt(5),
-                    2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
-                    rand.nextInt(2));
+                    enemigo1 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            2 + rand.nextInt(5),
+                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            rand.nextInt(2));
                 } else if (enemigo2 == null) {
-                    enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)], tipos[elegido][0][0],
-                    2 + rand.nextInt(5),
-                    2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
-                    rand.nextInt(2));
+                    enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            2 + rand.nextInt(5),
+                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            rand.nextInt(2));
                 } else if (enemigo3 == null) {
-                    enemigo3 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)], tipos[elegido][0][0],
-                    2 + rand.nextInt(5),
-                    2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
-                    rand.nextInt(2));
+                    enemigo3 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            2 + rand.nextInt(5),
+                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            rand.nextInt(2));
                 } else if (enemigo4 == null) {
-                    enemigo4 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)], tipos[elegido][0][0],
-                    2 + rand.nextInt(5),
-                    2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
-                    rand.nextInt(2));
-                }else if (enemigo5 == null) {
-                    enemigo5 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)], tipos[elegido][0][0],
-                    2 + rand.nextInt(5),
-                    2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
-                    rand.nextInt(2));
-                }else{
-                    
+                    enemigo4 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            2 + rand.nextInt(5),
+                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            rand.nextInt(2));
+                } else if (enemigo5 == null) {
+                    enemigo5 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            2 + rand.nextInt(5),
+                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            rand.nextInt(2));
+                } else {
+
                 }
             }
         }
@@ -206,25 +211,23 @@ public class controlador {
     }
 
     public Monstruo getEnemigo(int num) {
-        if (num==1) {
+        if (num == 1) {
             return (enemigo1);
-        }else if (num==2) {
+        } else if (num == 2) {
             return enemigo2;
-            
-        }else if (num==3) {
+
+        } else if (num == 3) {
             return enemigo3;
-            
-        }else if (num==4) {
+
+        } else if (num == 4) {
             return enemigo4;
-            
-        }else if (num==5) {
+
+        } else if (num == 5) {
             return enemigo5;
-            
-        } 
+
+        }
         return enemigo5;
     }
-
-
 
     public Jugador verEquipo(int num) {
         if (num == 1) {
@@ -239,8 +242,41 @@ public class controlador {
         return (jugador4);
     }
 
-    public void atacar(){
-        
+    public String atacar(int enemigo, int jugador, int ataque) {
+        Random rand = new Random();
+        int poderAtaque = 1;
+        int acierto = 1;
+
+        if (jugador == 1) {
+            poderAtaque = jugador1.calcularAtaque(ataque);
+            acierto = jugador1.getRol().getHabilidades().get(ataque).getAcierto();
+        } else if (jugador == 2) {
+            poderAtaque = jugador2.calcularAtaque(ataque);
+            acierto = jugador1.getRol().getHabilidades().get(ataque).getAcierto();
+        } else if (jugador == 3) {
+            poderAtaque = jugador3.calcularAtaque(ataque);
+            acierto = jugador1.getRol().getHabilidades().get(ataque).getAcierto();
+        } else if (jugador == 4) {
+            poderAtaque = jugador4.calcularAtaque(ataque);
+            acierto = jugador4.getRol().getHabilidades().get(ataque).getAcierto();
+        }
+
+        if (rand.nextInt(100) > acierto) {
+            return "El Ataque Ha fallado!!!";
+        } else {
+            if (enemigo == 1) {
+                return enemigo1.recivirDaño(poderAtaque);
+            } else if (enemigo == 2) {
+                return enemigo2.recivirDaño(poderAtaque);              
+            } else if (enemigo == 3) {
+                return enemigo3.recivirDaño(poderAtaque);              
+            } else if (enemigo == 4) {
+                return enemigo4.recivirDaño(poderAtaque);             
+            } else if (enemigo == 5) {
+                return enemigo5.recivirDaño(poderAtaque);  
+            }
+        }
+        return "";
     }
 
 }

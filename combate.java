@@ -94,34 +94,36 @@ public class combate {
 
                     break;
                 case 3:
+                for (int i = 0; i < Jugadores; i++) {    
                     System.out.println();
-                    System.out.println("-------Menú Principal--------");
-                    System.out.println("1) Ver equipo");
-                    System.out.println("2) Ver Enemigos");
-                    System.out.println("3) Atacar");
-                    System.out.println("4) Objetos");
-                    System.out.print("Elige una opción: ");
-
-                    opcion = escaner.nextInt();
-
-                    switch (opcion) {
-                        case 1:
-
-                            break;
-                        case 2:
-
-                            break;
-                        case 3:
-
-                            break;
-                        case 4:
-
-                            break;
-                        default:
-                            System.out.println("Opción inválida.");
-
-                            break;
+                    System.out.println("------Jugador "+(i+1)+"-------ATACAR A:");
+                    System.out.println("    1) "+ control.getEnemigo(1).getNombre()+" Vida: " + control.getEnemigo(1).getVida()*7);
+                    System.out.println("    2) "+ control.getEnemigo(2).getNombre()+" Vida: " + control.getEnemigo(2).getVida()*7);
+                    System.out.println("    3) "+ control.getEnemigo(3).getNombre()+" Vida: " + control.getEnemigo(3).getVida()*7);
+                    System.out.println("    4) "+ control.getEnemigo(4).getNombre()+" Vida: " + control.getEnemigo(4).getVida()*7);
+                    System.out.println("    5) "+ control.getEnemigo(5).getNombre()+" Vida: " + control.getEnemigo(5).getVida()*7);
+                    System.out.print("  Elige una opción: ");
+                    int objetivo = escaner.nextInt();
+                    if (objetivo > 5 || objetivo <0) {
+                        System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 5");
+                        break;
                     }
+                    System.out.println("------Jugador "+(i+1)+"-------Elejir Habilidad:");
+                    System.out.println("        1) "+ control.getEnemigo(1).getNombre()+" Vida: " + control.getEnemigo(1).getVida()*7);
+                    System.out.println("        2) "+ control.getEnemigo(2).getNombre()+" Vida: " + control.getEnemigo(2).getVida()*7);
+                    System.out.println("        3) "+ control.getEnemigo(3).getNombre()+" Vida: " + control.getEnemigo(3).getVida()*7);
+                    System.out.println("        4) "+ control.getEnemigo(4).getNombre()+" Vida: " + control.getEnemigo(4).getVida()*7);
+                    System.out.print("  Elige una opción: ");
+                    int objetivoAtaque = escaner.nextInt();
+                    if (objetivoAtaque > 5 || objetivo <0) {
+                        System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 4");
+                        break;
+                    }
+                    
+
+                    System.out.println(control.atacar(objetivo, i+1,objetivoAtaque)); 
+                    
+                }
                     break;
                 case 4:
                     System.out.println("Cerrando juego");

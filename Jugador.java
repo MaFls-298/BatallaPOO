@@ -63,4 +63,9 @@ public class Jugador {
     public void setRol(Clase rol) {
         this.rol = rol;
     }
+
+    public int calcularAtaque(int skill){
+        int poderAtaque = (int) Math.round(1 + ((ataque * rol.getMultiplicadorDaño()) * (rol.getHabilidades().get(skill).getPoder() * 0.0012)));
+        return poderAtaque;//45 a 15 de ataque por ataque y clase se multiplica por la potencia por un 1.2%
+    }
 }

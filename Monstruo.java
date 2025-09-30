@@ -44,4 +44,14 @@ public class Monstruo {
         return monedas;
     }
 
+    public String recivirDaño(int poder){//proximamente pedir tipo para multiplicador
+        System.out.println(poder);
+        vida = vida-poder;//Proximamente tener en cuenta la defensa :v
+        if (vida <= 0) {
+            return "El enemigo ha caido";
+        }else{
+            return "El enemigo ha sido dañado";
+        }
+    }
+
 }
