@@ -109,10 +109,10 @@ public class combate {
                         break;
                     }
                     System.out.println("------Jugador "+(i+1)+"-------Elejir Habilidad:");
-                    System.out.println("        1) "+ control.getEnemigo(1).getNombre()+" Vida: " + control.getEnemigo(1).getVida()*7);
-                    System.out.println("        2) "+ control.getEnemigo(2).getNombre()+" Vida: " + control.getEnemigo(2).getVida()*7);
-                    System.out.println("        3) "+ control.getEnemigo(3).getNombre()+" Vida: " + control.getEnemigo(3).getVida()*7);
-                    System.out.println("        4) "+ control.getEnemigo(4).getNombre()+" Vida: " + control.getEnemigo(4).getVida()*7);
+                    System.out.println("        1) "+ control.verEquipo(i+1).getRol().getHabilidades().get(0).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(0).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(0).getAcierto());
+                    System.out.println("        2) "+ control.verEquipo(i+1).getRol().getHabilidades().get(1).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(1).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(1).getAcierto());
+                    System.out.println("        3) "+ control.verEquipo(i+1).getRol().getHabilidades().get(2).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(2).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(2).getAcierto());
+                    System.out.println("        4) "+ control.verEquipo(i+1).getRol().getHabilidades().get(3).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(3).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(3).getAcierto());
                     System.out.print("  Elige una opción: ");
                     int objetivoAtaque = escaner.nextInt();
                     if (objetivoAtaque > 5 || objetivo <0) {
