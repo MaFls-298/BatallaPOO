@@ -94,9 +94,34 @@ public class combate {
 
                     break;
                 case 3:
-                    // :v de chanse fue muy repentino no da tiempo xd
-                    System.out.println("Proximamente solo en cines :D");
+                    System.out.println();
+                    System.out.println("-------Menú Principal--------");
+                    System.out.println("1) Ver equipo");
+                    System.out.println("2) Ver Enemigos");
+                    System.out.println("3) Atacar");
+                    System.out.println("4) Objetos");
+                    System.out.print("Elige una opción: ");
 
+                    opcion = escaner.nextInt();
+
+                    switch (opcion) {
+                        case 1:
+
+                            break;
+                        case 2:
+
+                            break;
+                        case 3:
+
+                            break;
+                        case 4:
+
+                            break;
+                        default:
+                            System.out.println("Opción inválida.");
+
+                            break;
+                    }
                     break;
                 case 4:
                     System.out.println("Cerrando juego");
