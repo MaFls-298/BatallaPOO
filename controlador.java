@@ -14,6 +14,9 @@ public class controlador {
     private Monstruo enemigo5;
 
     public boolean oleadaViva = false;
+    
+    private int habilidadDuplicada = 10;
+    private int habilidadDuplicada2 = 17;
 
     private int piso = 1;
     private int monedas = 5;
@@ -125,7 +128,12 @@ public class controlador {
 
         for (int i = 0; i < 4; i++) {
             havilidadganada = rand.nextInt(habilidades.size());
+            if (havilidadganada == habilidadDuplicada || havilidadganada == habilidadDuplicada2) {
+                havilidadganada = rand.nextInt(habilidades.size());
+            }
             habilidadesPlayer.addLast(habilidades.get(havilidadganada));
+            habilidadDuplicada2 = habilidadDuplicada;
+            habilidadDuplicada = havilidadganada;
         }
         Clase rol = new Clase(nombresClases[claseganada], vidaClases[claseganada], dañoClases[claseganada],
                 defensaClases[claseganada], manaClases[claseganada], habilidadesPlayer);
@@ -176,32 +184,32 @@ public class controlador {
                 if (enemigo1 == null) {
                     enemigo1 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            2 + rand.nextInt(5),
-                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
                             rand.nextInt(2));
                 } else if (enemigo2 == null) {
                     enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            2 + rand.nextInt(5),
-                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
                             rand.nextInt(2));
                 } else if (enemigo3 == null) {
                     enemigo3 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            2 + rand.nextInt(5),
-                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
                             rand.nextInt(2));
                 } else if (enemigo4 == null) {
                     enemigo4 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            2 + rand.nextInt(5),
-                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
                             rand.nextInt(2));
                 } else if (enemigo5 == null) {
                     enemigo5 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            2 + rand.nextInt(5),
-                            2 + rand.nextInt(5), 2 + rand.nextInt(5), objetos.get(rand.nextInt(objetos.size())),
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
                             rand.nextInt(2));
                 } else {
 

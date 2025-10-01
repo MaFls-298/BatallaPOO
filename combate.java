@@ -64,7 +64,7 @@ public class combate {
                         control.verEquipo(i+1).getVida()+" Ataque: "+
                         control.verEquipo(i+1).getAtaque()+" defensa: "+
                         control.verEquipo(i+1).getDefensa()+" Mana: "+
-                        control.verEquipo(i+1).getRol().getCantidadMana()+" EXP: "+
+                        control.verEquipo(i+1).getMana()+" EXP: "+
                         control.verEquipo(i+1).getExperiencia());
                         System.out.println("Skills: ");
                         for (int j = 0; j < control.verEquipo(i+1).getRol().getHabilidades().size(); j++) {
@@ -86,9 +86,10 @@ public class combate {
                             System.out.println(control.getEnemigo(i+1).getNombre());
                             System.out.println("Tipo: "+ 
                             (control.getEnemigo(i+1).getTipo())+" Vida: "+
-                            (7*control.getEnemigo(i+1).getVida())+" Ataque: "+
-                            (4*control.getEnemigo(i+1).getAtaque())+" defensa: "+
-                            (5*control.getEnemigo(i+1).getDefensa()));
+                            (control.getEnemigo(i+1).getVida())+" Ataque: "+
+                            (control.getEnemigo(i+1).getAtaque())+" defensa: "+
+                            (control.getEnemigo(i+1).getDefensa())+ " Objeto: "+
+                            control.getEnemigo(i+1).getObjeto().getNombre());
 
                     }
 
@@ -97,11 +98,11 @@ public class combate {
                 for (int i = 0; i < Jugadores; i++) {    
                     System.out.println();
                     System.out.println("------Jugador "+(i+1)+"-------ATACAR A:");
-                    System.out.println("    1) "+ control.getEnemigo(1).getNombre()+" Vida: " + control.getEnemigo(1).getVida()*7);
-                    System.out.println("    2) "+ control.getEnemigo(2).getNombre()+" Vida: " + control.getEnemigo(2).getVida()*7);
-                    System.out.println("    3) "+ control.getEnemigo(3).getNombre()+" Vida: " + control.getEnemigo(3).getVida()*7);
-                    System.out.println("    4) "+ control.getEnemigo(4).getNombre()+" Vida: " + control.getEnemigo(4).getVida()*7);
-                    System.out.println("    5) "+ control.getEnemigo(5).getNombre()+" Vida: " + control.getEnemigo(5).getVida()*7);
+                    System.out.println("    1) "+ control.getEnemigo(1).getNombre()+" Vida: " + control.getEnemigo(1).getVida());
+                    System.out.println("    2) "+ control.getEnemigo(2).getNombre()+" Vida: " + control.getEnemigo(2).getVida());
+                    System.out.println("    3) "+ control.getEnemigo(3).getNombre()+" Vida: " + control.getEnemigo(3).getVida());
+                    System.out.println("    4) "+ control.getEnemigo(4).getNombre()+" Vida: " + control.getEnemigo(4).getVida());
+                    System.out.println("    5) "+ control.getEnemigo(5).getNombre()+" Vida: " + control.getEnemigo(5).getVida());
                     System.out.print("  Elige una opción: ");
                     int objetivo = escaner.nextInt();
                     if (objetivo > 5 || objetivo <0) {

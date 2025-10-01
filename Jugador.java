@@ -74,9 +74,9 @@ public class Jugador {
     }
 
     public int calcularAtaque(int skill){
-        int poderAtaque = (int) Math.round(1 + (ataque * (rol.getHabilidades().get(skill).getPoder() * 0.008)));
+        int poderAtaque = (int) Math.round(1 + (ataque * (rol.getHabilidades().get(skill).getPoder() * 0.01)));
         System.out.println("ATAQUE PLANO " + ataque);
-        System.out.println("Habilidad "+ rol.getHabilidades().get(skill).getPoder() * 0.005);
+        System.out.println("Habilidad "+ rol.getHabilidades().get(skill).getPoder() * 0.01);
         System.out.println("DAÑO: "+poderAtaque);
         return poderAtaque;//45 a 15 de ataque por ataque y clase se multiplica por la potencia por un 1.2%
     }
