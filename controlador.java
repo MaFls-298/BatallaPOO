@@ -148,6 +148,36 @@ public class controlador {
         }
     }
 
+    public int pesoPorTier(int tier) {
+        switch (tier) {//Peso de los objetos por tier
+            case 1: return 60;  
+            case 2: return 30;  
+            case 3: return 10;  
+            default: return 1;  
+        }
+    }
+    public Objetos obtenerObjetoAleatorioPorTier() {
+        
+        Random rand = new Random();
+        int totalPeso=0;
+
+        for (Objetos obj : objetos) {            
+            totalPeso = pesoPorTier(obj.getRareza());
+        }
+
+        int r = rand.nextInt(totalPeso);
+
+        int acumulado = 0;
+        for (Objetos obj : objetos) {
+            acumulado += pesoPorTier(obj.getRareza());
+            if (r < acumulado) {
+                return obj;
+            }
+        }
+        return objetos.get(objetos.size() - 1);
+    }
+
+
     public void generarOleada() {
         Random rand = new Random();
 
@@ -185,31 +215,31 @@ public class controlador {
                     enemigo1 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
                             7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo2 == null) {
                     enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
                             7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo3 == null) {
                     enemigo3 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
                             7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo4 == null) {
                     enemigo4 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
                             7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo5 == null) {
                     enemigo5 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
                             7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), objetos.get(rand.nextInt(objetos.size())),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else {
 

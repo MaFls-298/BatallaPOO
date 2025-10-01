@@ -51,7 +51,10 @@ public class Monstruo {
         System.out.println(poder);
         int vidaquitada = 0;
         String ataqueCrit = "";
+        String nuevaDefensa;
         System.out.println(nombre+ " vida: "+ vida);
+
+        
         if (rand.nextInt(10)==1) {
             vidaquitada = defensa-2*(poder);    
             ataqueCrit = "ATAQUE CRITICO    ";        
