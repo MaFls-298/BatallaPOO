@@ -22,6 +22,10 @@ public class controlador {
     private int monedas = 5;    
     private Random rand = new Random();
 
+    public int getMonedas(){
+        return monedas;
+    }
+
     private static final String[][][] tipos = { { { "Fuego" }, { "Tierra", "Agua" }, { "Planta", "Acero" } },
             { { "Agua" }, { "Planta", "Electrico" }, { "Fuego", "Tierra" } },
             { { "Electrico" }, { "Tierra" }, { "Agua", "Acero" } },
@@ -212,7 +216,7 @@ public class controlador {
                     enemigo1 = new Monstruo("Jefe "+nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
                             10*7*(3 + rand.nextInt(4)),
-                            5*(2 + rand.nextInt(5)), 6*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            5*(3 + rand.nextInt(4)), 6*(3 + rand.nextInt(4)), obtenerObjetoAleatorioPorTier(),
                             5+rand.nextInt(4));
                 } else if (enemigo2 == null) {
                     enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
@@ -244,6 +248,9 @@ public class controlador {
             }
         } else if (false /* piso % 5 == 1 */) {
             
+            //TIENDA :VVVVVVVVVVVVVVVVVVVVVVVVV
+
+
         } else {
             int numMon = 2 + rand.nextInt(2);
             for (int i = 0; i < 5; i++) {
@@ -331,7 +338,25 @@ public class controlador {
         return (jugador4);
     }
 
+    public String curar(int num, Clase rol, int mana, int acierto){
+        if (rand.nextInt(100)< acierto) {
+            if (num == 1) {
+                return jugador1.calcularCuracion(rol,mana);
+            } else if (num == 2) {
+                return jugador2.calcularCuracion(rol,mana);
+            } else if (num == 3) {
+                return jugador3.calcularCuracion(rol,mana);
+            } else if (num == 4) {
+                return jugador4.calcularCuracion(rol,mana);
+            }
+            
+        }
+        return "La curacion ha fallado";
+    }
+
     public String atacar(int enemigo, int jugador, int ataque) {
+
+
         Random rand = new Random();
         int poderAtaque = 1;
         int acierto = 1;
@@ -370,19 +395,19 @@ public class controlador {
 
     public void turnoEnemigos(){
         if (enemigo1 != null && enemigo1.getVida() > 0) {
-            monstruosAtacan(enemigo1.calcularAtaque());
+            monstruosAtacan(enemigo1.calcularAtaque(), enemigo1.getVida());
         }
         if (enemigo2 != null && enemigo2.getVida() > 0) {
-            monstruosAtacan(enemigo2.calcularAtaque());
+            monstruosAtacan(enemigo2.calcularAtaque(), 0);
         }
         if (enemigo3 != null && enemigo3.getVida() > 0) {
-            monstruosAtacan(enemigo3.calcularAtaque());
+            monstruosAtacan(enemigo3.calcularAtaque(),0);
         }
         if (enemigo4 != null && enemigo4.getVida() > 0) {
-            monstruosAtacan(enemigo4.calcularAtaque());
+            monstruosAtacan(enemigo4.calcularAtaque(),0);
         }
         if (enemigo5 != null && enemigo5.getVida() > 0) {
-            monstruosAtacan(enemigo5.calcularAtaque());
+            monstruosAtacan(enemigo5.calcularAtaque(),0);
         }
 
         if (enemigo5.getVida() <= 0 && enemigo4.getVida() <= 0 && enemigo3.getVida() <= 0 && enemigo2.getVida() <= 0 && enemigo1.getVida() <= 0) {
@@ -391,8 +416,44 @@ public class controlador {
 
     }
 
-    public void monstruosAtacan(int ataque){
-        
+    public void monstruosAtacan(int ataque, int vida){
+
+        if (rand.nextInt(101)>88 && vida > 200) {
+            System.out.println("El MONSTRUO HA FALLADO!!");
+        }else{
+            int jugadoresActuales=0;
+            boolean verificar = true;
+            if (jugador1 != null) {
+                jugadoresActuales = 1;
+            }
+            if (jugador2 != null) {
+                jugadoresActuales=2;
+            }
+            if (jugador3 != null) {
+                jugadoresActuales=3;
+            }
+            if (jugador4 != null) {
+                jugadoresActuales=4;
+            }
+            while (verificar) {
+                int eleccion = rand.nextInt(jugadoresActuales);
+                if (eleccion == 0 && jugador1.getVida()>0) {
+                    System.out.println(jugador1.recivirDaño(ataque));
+                    verificar = false;
+                } else if(eleccion ==1 && jugador2.getVida()>0){
+                    System.out.println(jugador2.recivirDaño(ataque));
+                    verificar = false;
+                }else if(eleccion ==2 && jugador3.getVida()>0){
+                    System.out.println(jugador3.recivirDaño(ataque));
+                    verificar = false;
+                }else if(eleccion ==3 && jugador4.getVida()>0){
+                    System.out.println(jugador4.recivirDaño(ataque));
+                    verificar = false;
+                }
+
+            }
+        }
+
         if (rand.nextInt(101)>64) {
             System.out.println("El MONSTRUO HA FALLADO!!");
         }else{

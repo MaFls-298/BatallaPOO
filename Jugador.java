@@ -66,7 +66,7 @@ public class Jugador {
     }
 
     public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
+        this.experiencia += experiencia;
     }
 
     public Clase getRol() {
@@ -106,5 +106,15 @@ public class Jugador {
         }else{
             return ataqueCrit+"El jugador "+nombre+" ha sido dañado";
         }
+    }
+
+    public String calcularCuracion(Clase rolCurador, int mana){
+        int vidamax = (int) Math.round(rol.getMultiplicadorVida()*5);
+        int vidaSumada = (int) Math.round((5*rolCurador.getMultiplicadorVida()*mana)*0.017);
+        this.vida = this.vida + vidaSumada;
+        if (this.vida > vidamax) {
+            this.vida = vidamax;
+        }
+        return"El aliado ha recuperado:  " + vidaSumada;
     }
 }

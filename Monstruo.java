@@ -53,11 +53,11 @@ public class Monstruo {
         int multiplicador = 1;
         
         if (rand.nextInt(10)==1) {
-            vidaquitada = (int) Math.round(((40+rand.nextInt(61))*0.01)*(defensa+objeto.getDefensaGanada()))-2*(poder);    
+            vidaquitada = (int) Math.round(((20+rand.nextInt(81))*0.01)*(defensa+objeto.getDefensaGanada()))-2*(poder);    
             ataqueCrit = "ATAQUE CRITICO    ";   
             multiplicador = 2;     
         }else{
-            vidaquitada = (int) Math.round(((40+rand.nextInt(61))*0.01)*(defensa+objeto.getDefensaGanada()))-(poder);           
+            vidaquitada = (int) Math.round(((20+rand.nextInt(81))*0.01)*(defensa+objeto.getDefensaGanada()))-(poder);           
         }
         if (vidaquitada >= 0) {
             return ataqueCrit+"La defensa del enemigo neutralizo el ataque      daño hecho: "+(poder*multiplicador);

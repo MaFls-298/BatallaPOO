@@ -49,7 +49,9 @@ public class combate {
             System.out.println("1) Ver equipo");
             System.out.println("2) Ver Enemigos");
             System.out.println("3) Atacar");
-            System.out.println("4) Objetos");
+            if (true) {                
+                System.out.println("4) Objetos");
+            }
             System.out.print("Elige una opción: ");
 
             opcion = escaner.nextInt();
@@ -95,42 +97,67 @@ public class combate {
 
                     break;
                 case 3:
-                for (int i = 0; i < Jugadores; i++) {    
-                    System.out.println();
-                    System.out.println("------Jugador "+(i+1)+"-------ATACAR A:");
-                    System.out.println("    1) "+ control.getEnemigo(1).getNombre()+" Vida: " + control.getEnemigo(1).getVida());
-                    System.out.println("    2) "+ control.getEnemigo(2).getNombre()+" Vida: " + control.getEnemigo(2).getVida());
-                    System.out.println("    3) "+ control.getEnemigo(3).getNombre()+" Vida: " + control.getEnemigo(3).getVida());
-                    System.out.println("    4) "+ control.getEnemigo(4).getNombre()+" Vida: " + control.getEnemigo(4).getVida());
-                    System.out.println("    5) "+ control.getEnemigo(5).getNombre()+" Vida: " + control.getEnemigo(5).getVida());
-                    System.out.print("  Elige una opción: ");
-                    int objetivo = escaner.nextInt();
-                    if (objetivo > 5 || objetivo <0) {
-                        System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 5");
-                        break;
-                    }
-                    System.out.println("------Jugador "+(i+1)+"-------Elejir Habilidad:");
-                    System.out.println("        1) "+ control.verEquipo(i+1).getRol().getHabilidades().get(0).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(0).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(0).getAcierto());
-                    System.out.println("        2) "+ control.verEquipo(i+1).getRol().getHabilidades().get(1).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(1).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(1).getAcierto());
-                    System.out.println("        3) "+ control.verEquipo(i+1).getRol().getHabilidades().get(2).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(2).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(2).getAcierto());
-                    System.out.println("        4) "+ control.verEquipo(i+1).getRol().getHabilidades().get(3).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(3).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(3).getAcierto());
-                    System.out.print("  Elige una opción: ");
-                    int objetivoAtaque = escaner.nextInt();
-                    if (objetivoAtaque > 5 || objetivo <0) {
-                        System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 4");
-                        break;
-                    }
-                    
+                for (int i = 0; i < Jugadores; i++) {   
+                    if (control.verEquipo(i+1).getVida()>0) {
+                        System.out.println();
+                        System.out.println("------Jugador "+control.verEquipo(i+1).getNombre()+"-------Elejir Habilidad:");
+                        System.out.println("        1) "+ control.verEquipo(i+1).getRol().getHabilidades().get(0).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(0).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(0).getAcierto());
+                        System.out.println("        2) "+ control.verEquipo(i+1).getRol().getHabilidades().get(1).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(1).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(1).getAcierto());
+                        System.out.println("        3) "+ control.verEquipo(i+1).getRol().getHabilidades().get(2).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(2).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(2).getAcierto());
+                        System.out.println("        4) "+ control.verEquipo(i+1).getRol().getHabilidades().get(3).getNombre()+" Poder: "+control.verEquipo(i+1).getRol().getHabilidades().get(3).getPoder() +" Acierto: " + control.verEquipo(i+1).getRol().getHabilidades().get(3).getAcierto());
+                        System.out.print("  Elige una opción: ");
+                        int objetivoAtaque = escaner.nextInt();
+                        if (objetivoAtaque > 4 || objetivoAtaque <0) {
+                            System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 4");
+                            break;
+                        }
+                        
+                        if (control.verEquipo(i+1).getRol().getHabilidades().get(objetivoAtaque-1).getPoder()<=0) {
+                            System.out.println("------Jugador "+control.verEquipo(i+1).getNombre()+"-------CURAR A:");
+                            if (control.verEquipo(1)!=null) {
+                                System.out.println("    1) "+ control.verEquipo(1).getNombre()+" Vida: " + control.verEquipo(1).getVida());
+                            }
+                            if (control.verEquipo(2)!=null) {
+                                System.out.println("    2) "+ control.verEquipo(2).getNombre()+" Vida: " + control.verEquipo(2).getVida());
+                            }
+                            if (control.verEquipo(3)!=null) {
+                                System.out.println("    3) "+ control.verEquipo(3).getNombre()+" Vida: " + control.verEquipo(3).getVida());
+                            }                           
+                            if (control.verEquipo(4)!=null) {
+                                System.out.println("    4) "+ control.verEquipo(4).getNombre()+" Vida: " + control.verEquipo(4).getVida());
+                            }
+                            System.out.print("  Elige una opción: ");
+                            int objetivo = escaner.nextInt();
+                            System.out.println(control.curar(objetivo,control.verEquipo(i+1).getRol(),control.verEquipo(i+1).getMana(),control.verEquipo(i+1).getRol().getHabilidades().get(objetivoAtaque-1).getAcierto()));
+                        }else{
+                            System.out.println("------Jugador "+control.verEquipo(i+1).getNombre()+"-------ATACAR A:");
+                            System.out.println("    1) "+ control.getEnemigo(1).getNombre()+" Vida: " + control.getEnemigo(1).getVida());
+                            System.out.println("    2) "+ control.getEnemigo(2).getNombre()+" Vida: " + control.getEnemigo(2).getVida());
+                            System.out.println("    3) "+ control.getEnemigo(3).getNombre()+" Vida: " + control.getEnemigo(3).getVida());
+                            System.out.println("    4) "+ control.getEnemigo(4).getNombre()+" Vida: " + control.getEnemigo(4).getVida());
+                            System.out.println("    5) "+ control.getEnemigo(5).getNombre()+" Vida: " + control.getEnemigo(5).getVida());
+                            System.out.print("  Elige una opción: ");
+                            int objetivo = escaner.nextInt();
+                            if (objetivo > 5 || objetivo <0) {
+                                System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 5");
+                                break;
+                            }
+                            System.out.println(control.atacar(objetivo, i+1,objetivoAtaque-1)); 
 
-                    System.out.println(control.atacar(objetivo, i+1,objetivoAtaque-1)); 
+                        }
+                        
+    
+                    }else{
+
+                    }     
                     
                 }
                 
                 control.turnoEnemigos();
                     break;
                 case 4:
-                    System.out.println("ver inventario");
-                    System.out.println("");
+                    System.out.println("--------inventario--------");
+                    System.out.println("Monedas: "+ control.getMonedas());
                     break;
                 default:
                     System.out.println("Opción inválida.");
