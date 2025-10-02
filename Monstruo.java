@@ -7,16 +7,16 @@ public class Monstruo {
     private int vida;
     private int defensa;
     private int ataque;
-    private Objetos Objeto;
+    private Objetos objeto;
     private int monedas;
 
     public Monstruo(String nombre, String tipo, int vida, int defensa, int ataque, Objetos objeto, int monedas) {
         this.nombre = nombre;
         this.tipo = tipo;
-        this.vida = vida;
-        this.defensa = defensa;
-        this.ataque = ataque;
-        this.Objeto = objeto;
+        this.vida = vida + objeto.getVidaGanada();
+        this.defensa = defensa + objeto.getDefensaGanada();
+        this.ataque = ataque + objeto.getAtaqueGanado();
+        this.objeto = objeto;
         this.monedas = monedas;
     }
 
@@ -40,7 +40,7 @@ public class Monstruo {
     }
 
     public Objetos getObjeto() {
-        return Objeto;
+        return objeto;
     }
 
     public int getMonedas() {
@@ -51,15 +51,12 @@ public class Monstruo {
         System.out.println(poder);
         int vidaquitada = 0;
         String ataqueCrit = "";
-        String nuevaDefensa;
-        System.out.println(nombre+ " vida: "+ vida);
-
         
         if (rand.nextInt(10)==1) {
-            vidaquitada = defensa-2*(poder);    
+            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa+objeto.getDefensaGanada()))-2*(poder);    
             ataqueCrit = "ATAQUE CRITICO    ";        
         }else{
-            vidaquitada = defensa-(poder);            
+            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa+objeto.getDefensaGanada()))-(poder);           
         }
         if (vidaquitada >= 0) {
             return ataqueCrit+"La defensa del enemigo neutralizo el ataque";
@@ -73,6 +70,11 @@ public class Monstruo {
         }else{
             return ataqueCrit+"El enemigo ha sido dañado";
         }
+    }
+
+    public int calcularAtaque(){
+        int poderAtaque = (int) Math.round(1 + (ataque * ((20+ rand.nextInt(90)) * 0.01)));
+        return poderAtaque;
     }
 
 }

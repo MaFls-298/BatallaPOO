@@ -19,7 +19,8 @@ public class controlador {
     private int habilidadDuplicada2 = 17;
 
     private int piso = 1;
-    private int monedas = 5;
+    private int monedas = 5;    
+    private Random rand = new Random();
 
     private static final String[][][] tipos = { { { "Fuego" }, { "Tierra", "Agua" }, { "Planta", "Acero" } },
             { { "Agua" }, { "Planta", "Electrico" }, { "Fuego", "Tierra" } },
@@ -316,6 +317,62 @@ public class controlador {
             }
         }
         return "";
+    }
+
+    public void turnoEnemigos(){
+        if (enemigo1 != null && enemigo1.getVida() > 0) {
+            monstruosAtacan(enemigo1.calcularAtaque());
+        }
+        if (enemigo2 != null && enemigo2.getVida() > 0) {
+            monstruosAtacan(enemigo2.calcularAtaque());
+        }
+        if (enemigo3 != null && enemigo3.getVida() > 0) {
+            monstruosAtacan(enemigo3.calcularAtaque());
+        }
+        if (enemigo4 != null && enemigo4.getVida() > 0) {
+            monstruosAtacan(enemigo4.calcularAtaque());
+        }
+        if (enemigo5 != null && enemigo5.getVida() > 0) {
+            monstruosAtacan(enemigo5.calcularAtaque());
+        }
+
+    }
+
+    public void monstruosAtacan(int ataque){
+        int jugadoresActuales=0;
+        boolean verificar = true;
+        if (jugador1 != null) {
+            jugadoresActuales = 1;
+        }
+        if (jugador2 != null) {
+            jugadoresActuales=2;
+        }
+        if (jugador3 != null) {
+            jugadoresActuales=3;
+        }
+        if (jugador4 != null) {
+            jugadoresActuales=4;
+        }
+        while (verificar) {
+            int eleccion = rand.nextInt(jugadoresActuales);
+            if (eleccion == 0 && jugador1.getVida()>0) {
+                jugador1.recivirDaño(ataque);
+                verificar = false;
+            } else if(eleccion ==1 && jugador2.getVida()>0){
+                jugador2.recivirDaño(ataque);
+                verificar = false;
+            }else if(eleccion ==2 && jugador3.getVida()>0){
+                jugador3.recivirDaño(ataque);
+                verificar = false;
+            }else if(eleccion ==3 && jugador4.getVida()>0){
+                jugador4.recivirDaño(ataque);
+                verificar = false;
+            }
+            
+        }
+        
+
+
     }
 
 }

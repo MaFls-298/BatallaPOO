@@ -127,13 +127,18 @@ public class combate {
                 }
                     break;
                 case 4:
-                    System.out.println("Cerrando juego");
+                    System.out.println("ver inventario");
                     System.out.println("");
                     break;
                 default:
                     System.out.println("Opción inválida.");
             }
+            control.turnoEnemigos();
+
+
+
         }
+
 
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Jugador {
     private String nombre;
     private int vida;
@@ -7,6 +9,8 @@ public class Jugador {
     private int experiencia;
     private Clase rol;
     private Objetos objetoEquipado;
+    private Random rand = new Random();
+
 
     public Jugador(String nombre, int vida, int defensa, int ataque,int mana, int experiencia, Clase rol) {
         this.nombre = nombre;
@@ -79,5 +83,34 @@ public class Jugador {
         System.out.println("Habilidad "+ rol.getHabilidades().get(skill).getPoder() * 0.01);
         System.out.println("DAÑO: "+poderAtaque);
         return poderAtaque;//45 a 15 de ataque por ataque y clase se multiplica por la potencia por un 1.2%
+    }
+
+
+
+    public String recivirDaño(int poder){//proximamente pedir tipo para multiplicador
+        System.out.println(poder);
+        int vidaquitada = 0;
+        String ataqueCrit = "";
+        String nuevaDefensa;
+
+        
+        if (rand.nextInt(10)==1) {
+            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa))-2*(poder);      
+            ataqueCrit = "ATAQUE CRITICO    ";        
+        }else{
+            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa))-(poder);              
+        }
+        if (vidaquitada >= 0) {
+            return ataqueCrit+"La defensa del jugador neutralizo el ataque";
+        }else{
+            System.out.println("vida: "+ vida);
+            System.out.println(" vida quitada "+ vidaquitada);
+            vida = vida+vidaquitada;            
+        }
+        if (vida <= 0) {
+            return ataqueCrit+"El jugador ha caido";
+        }else{
+            return ataqueCrit+"El jugador ha sido dañado";
+        }
     }
 }
