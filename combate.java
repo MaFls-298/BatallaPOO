@@ -125,6 +125,8 @@ public class combate {
                     System.out.println(control.atacar(objetivo, i+1,objetivoAtaque-1)); 
                     
                 }
+                
+                control.turnoEnemigos();
                     break;
                 case 4:
                     System.out.println("ver inventario");
@@ -133,7 +135,6 @@ public class combate {
                 default:
                     System.out.println("Opción inválida.");
             }
-            control.turnoEnemigos();
 
 
 

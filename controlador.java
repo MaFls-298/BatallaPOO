@@ -36,33 +36,33 @@ public class controlador {
 
     private List<Habilidades> habilidades = Arrays.asList(
             // FUEGO
-            new Habilidades("Lanzallamas", "Fuego", 60, 88),
-            new Habilidades("Rafaga Llameante", "Fuego", 95, 70),
+            new Habilidades("Lanzallamas", "Fuego", 60, 90),
+            new Habilidades("Rafaga Llameante", "Fuego", 95, 75),
 
             // AGUA
-            new Habilidades("Cascada", "Agua", 60, 88),
-            new Habilidades("Marea", "Agua", 95, 70),
+            new Habilidades("Cascada", "Agua", 60, 90),
+            new Habilidades("Marea", "Agua", 95, 75),
 
             // ELECTRICO
-            new Habilidades("Chispazo", "Electrico", 60, 88),
-            new Habilidades("Trueno", "Electrico", 95, 70),
+            new Habilidades("Chispazo", "Electrico", 60, 90),
+            new Habilidades("Trueno", "Electrico", 95, 75),
 
             // TIERRA
-            new Habilidades("Pedrazo", "Tierra", 60, 88),
-            new Habilidades("Terremoto", "Tierra", 95, 70),
+            new Habilidades("Pedrazo", "Tierra", 60, 90),
+            new Habilidades("Terremoto", "Tierra", 95, 75),
 
             // PLANTA
-            new Habilidades("Latigazo", "Planta", 60, 88),
-            new Habilidades("Rafaga Espinada", "Planta", 95, 70),
+            new Habilidades("Latigazo", "Planta", 60, 90),
+            new Habilidades("Rafaga Espinada", "Planta", 95, 75),
             new Habilidades("Bien Natural", "Planta", 0, 95), // sin mana
 
             // ACERO
-            new Habilidades("Tajo", "Acero", 55, 90),
-            new Habilidades("Cuchillada", "Acero", 85, 75),
-            new Habilidades("Hachazo", "Acero", 105, 50),
+            new Habilidades("Tajo", "Acero", 55, 95),
+            new Habilidades("Cuchillada", "Acero", 85, 80),
+            new Habilidades("Hachazo", "Acero", 105, 65),
 
             // MAGIA
-            new Habilidades("Bendicion", "Magia", 0, 70),
+            new Habilidades("Bendicion", "Magia", 0, 75),
             new Habilidades("Curacion", "Magia", 0, 80),
             new Habilidades("Concentracion", "Magia", 0, 100),
             new Habilidades("Esfuerso", "Magia", 0, 90),
@@ -71,10 +71,10 @@ public class controlador {
             new Habilidades("Sutura", "Fisico", 0, 90), // curación
             new Habilidades("Cachetada", "Fisico", 30, 100),
             new Habilidades("Golpe", "Fisico", 45, 100),
-            new Habilidades("Bastonaso", "Fisico", 75, 80),
+            new Habilidades("Bastonaso", "Fisico", 75, 90),
             new Habilidades("Patada", "Fisico", 80, 80),
-            new Habilidades("Cabezazo", "Fisico", 100, 60),
-            new Habilidades("Embestida", "Fisico", 110, 40));
+            new Habilidades("Cabezazo", "Fisico", 100, 70),
+            new Habilidades("Embestida", "Fisico", 110, 55));
 
     private List<Objetos> objetos = Arrays.asList(
             new Objetos("Armadura ligera", 2, 2, 0, 0, false, 1),
@@ -163,7 +163,7 @@ public class controlador {
         int totalPeso=0;
 
         for (Objetos obj : objetos) {            
-            totalPeso = pesoPorTier(obj.getRareza());
+            totalPeso += pesoPorTier(obj.getRareza());
         }
 
         int r = rand.nextInt(totalPeso);
@@ -191,10 +191,59 @@ public class controlador {
             totalPeso += p;
         }
 
-        if (false /* piso % 5 == 0 */) {
+        if (piso % 5 == 0 ) {
+            int numMon = 2 + rand.nextInt(2);
+            for (int i = 0; i < 5; i++) {
 
+                int r = rand.nextInt(totalPeso);
+
+                int acumulado = 0;
+                int elegido = 7;
+
+                for (int j = 0; j < numeros.length; j++) {
+                    acumulado += pesos[j];
+                    if (r < acumulado) {
+                        elegido = numeros[j];
+                        break;
+                    }
+                }
+
+                if (enemigo1 == null) {
+                    enemigo1 = new Monstruo("Jefe "+nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            10*7*(3 + rand.nextInt(4)),
+                            5*(2 + rand.nextInt(5)), 6*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            5+rand.nextInt(4));
+                } else if (enemigo2 == null) {
+                    enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            rand.nextInt(2));
+                } else if (enemigo3 == null) {
+                    enemigo3 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            rand.nextInt(2));
+                } else if (enemigo4 == null) {
+                    enemigo4 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            rand.nextInt(2));
+                } else if (enemigo5 == null) {
+                    enemigo5 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
+                            tipos[elegido][0][0],
+                            7*(2 + rand.nextInt(5)),
+                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            rand.nextInt(2));
+                } else {
+
+                }
+            }
         } else if (false /* piso % 5 == 1 */) {
-
+            
         } else {
             int numMon = 2 + rand.nextInt(2);
             for (int i = 0; i < 5; i++) {
@@ -336,43 +385,73 @@ public class controlador {
             monstruosAtacan(enemigo5.calcularAtaque());
         }
 
+        if (enemigo5.getVida() <= 0 && enemigo4.getVida() <= 0 && enemigo3.getVida() <= 0 && enemigo2.getVida() <= 0 && enemigo1.getVida() <= 0) {
+            reiniciarPiso();
+        }
+
     }
 
     public void monstruosAtacan(int ataque){
-        int jugadoresActuales=0;
-        boolean verificar = true;
+        
+        if (rand.nextInt(101)>64) {
+            System.out.println("El MONSTRUO HA FALLADO!!");
+        }else{
+            int jugadoresActuales=0;
+            boolean verificar = true;
+            if (jugador1 != null) {
+                jugadoresActuales = 1;
+            }
+            if (jugador2 != null) {
+                jugadoresActuales=2;
+            }
+            if (jugador3 != null) {
+                jugadoresActuales=3;
+            }
+            if (jugador4 != null) {
+                jugadoresActuales=4;
+            }
+            while (verificar) {
+                int eleccion = rand.nextInt(jugadoresActuales);
+                if (eleccion == 0 && jugador1.getVida()>0) {
+                    System.out.println(jugador1.recivirDaño(ataque));
+                    verificar = false;
+                } else if(eleccion ==1 && jugador2.getVida()>0){
+                    System.out.println(jugador2.recivirDaño(ataque));
+                    verificar = false;
+                }else if(eleccion ==2 && jugador3.getVida()>0){
+                    System.out.println(jugador3.recivirDaño(ataque));
+                    verificar = false;
+                }else if(eleccion ==3 && jugador4.getVida()>0){
+                    System.out.println(jugador4.recivirDaño(ataque));
+                    verificar = false;
+                }
+
+            }
+        }
+    }
+
+
+    public void reiniciarPiso(){
+        int monedasGanadas = enemigo1.getMonedas()+enemigo2.getMonedas()+enemigo3.getMonedas()+enemigo4.getMonedas()+enemigo5.getMonedas();
+        enemigo1 = null;
+        enemigo2 = null;
+        enemigo3 = null;
+        enemigo4 = null;
+        enemigo5 = null;
         if (jugador1 != null) {
-            jugadoresActuales = 1;
+            jugador1.setExperiencia(40+rand.nextInt(61));
         }
         if (jugador2 != null) {
-            jugadoresActuales=2;
+            jugador2.setExperiencia(40+rand.nextInt(61));
         }
         if (jugador3 != null) {
-            jugadoresActuales=3;
+            jugador3.setExperiencia(40+rand.nextInt(61));
         }
         if (jugador4 != null) {
-            jugadoresActuales=4;
+            jugador4.setExperiencia(40+rand.nextInt(61));
         }
-        while (verificar) {
-            int eleccion = rand.nextInt(jugadoresActuales);
-            if (eleccion == 0 && jugador1.getVida()>0) {
-                jugador1.recivirDaño(ataque);
-                verificar = false;
-            } else if(eleccion ==1 && jugador2.getVida()>0){
-                jugador2.recivirDaño(ataque);
-                verificar = false;
-            }else if(eleccion ==2 && jugador3.getVida()>0){
-                jugador3.recivirDaño(ataque);
-                verificar = false;
-            }else if(eleccion ==3 && jugador4.getVida()>0){
-                jugador4.recivirDaño(ataque);
-                verificar = false;
-            }
-            
-        }
-        
-
-
+        piso = piso+1;
+        generarOleada();
     }
 
 }

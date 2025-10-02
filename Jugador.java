@@ -79,38 +79,32 @@ public class Jugador {
 
     public int calcularAtaque(int skill){
         int poderAtaque = (int) Math.round(1 + (ataque * (rol.getHabilidades().get(skill).getPoder() * 0.01)));
-        System.out.println("ATAQUE PLANO " + ataque);
-        System.out.println("Habilidad "+ rol.getHabilidades().get(skill).getPoder() * 0.01);
-        System.out.println("DAÑO: "+poderAtaque);
         return poderAtaque;//45 a 15 de ataque por ataque y clase se multiplica por la potencia por un 1.2%
     }
 
 
 
     public String recivirDaño(int poder){//proximamente pedir tipo para multiplicador
-        System.out.println(poder);
         int vidaquitada = 0;
         String ataqueCrit = "";
         String nuevaDefensa;
 
         
         if (rand.nextInt(10)==1) {
-            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa))-2*(poder);      
+            vidaquitada = (int) Math.round(((40+rand.nextInt(61))*0.01)*(defensa))-2*(poder);      
             ataqueCrit = "ATAQUE CRITICO    ";        
         }else{
-            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa))-(poder);              
+            vidaquitada = (int) Math.round(((40+rand.nextInt(61))*0.01)*(defensa))-(poder);              
         }
         if (vidaquitada >= 0) {
-            return ataqueCrit+"La defensa del jugador neutralizo el ataque";
+            return ataqueCrit+"La defensa del jugador "+nombre+" neutralizo el ataque";
         }else{
-            System.out.println("vida: "+ vida);
-            System.out.println(" vida quitada "+ vidaquitada);
             vida = vida+vidaquitada;            
         }
         if (vida <= 0) {
-            return ataqueCrit+"El jugador ha caido";
+            return ataqueCrit+"El jugador "+nombre+" ha caido";
         }else{
-            return ataqueCrit+"El jugador ha sido dañado";
+            return ataqueCrit+"El jugador "+nombre+" ha sido dañado";
         }
     }
 }

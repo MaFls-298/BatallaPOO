@@ -48,32 +48,31 @@ public class Monstruo {
     }
 
     public String recivirDaño(int poder){//proximamente pedir tipo para multiplicador
-        System.out.println(poder);
         int vidaquitada = 0;
         String ataqueCrit = "";
+        int multiplicador = 1;
         
         if (rand.nextInt(10)==1) {
-            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa+objeto.getDefensaGanada()))-2*(poder);    
-            ataqueCrit = "ATAQUE CRITICO    ";        
+            vidaquitada = (int) Math.round(((40+rand.nextInt(61))*0.01)*(defensa+objeto.getDefensaGanada()))-2*(poder);    
+            ataqueCrit = "ATAQUE CRITICO    ";   
+            multiplicador = 2;     
         }else{
-            vidaquitada = (int) Math.round(((50+rand.nextInt(51))*0.01)*(defensa+objeto.getDefensaGanada()))-(poder);           
+            vidaquitada = (int) Math.round(((40+rand.nextInt(61))*0.01)*(defensa+objeto.getDefensaGanada()))-(poder);           
         }
         if (vidaquitada >= 0) {
-            return ataqueCrit+"La defensa del enemigo neutralizo el ataque";
+            return ataqueCrit+"La defensa del enemigo neutralizo el ataque      daño hecho: "+(poder*multiplicador);
         }else{
-            System.out.println("vida: "+ vida);
-            System.out.println(" vida quitada "+ vidaquitada);
             vida = vida+vidaquitada;            
         }
         if (vida <= 0) {
-            return ataqueCrit+"El enemigo ha caido";
+            return ataqueCrit+"El enemigo ha caido      daño hecho: "+(poder*multiplicador);
         }else{
-            return ataqueCrit+"El enemigo ha sido dañado";
+            return ataqueCrit+"El enemigo ha sido dañado        daño hecho: "+(poder*multiplicador);
         }
     }
 
     public int calcularAtaque(){
-        int poderAtaque = (int) Math.round(1 + (ataque * ((20+ rand.nextInt(90)) * 0.01)));
+        int poderAtaque = (int) Math.round(1 + (ataque * ((30+ rand.nextInt(80)) * 0.01)));
         return poderAtaque;
     }
 
