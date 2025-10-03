@@ -35,6 +35,7 @@ public class combate {
         }
 
         // controlador.generarEquipoAleatorio();
+        //bt vercion2000
 
         int opcion = 0;
 
@@ -48,10 +49,10 @@ public class combate {
             System.out.println();
             System.out.println("-------Menú Principal--------");
             System.out.println("1) Ver equipo");
-            System.out.println("2) Ver Enemigos");
             if (control.getTienda()) {
                 System.out.println("3) Comprar");
             } else {
+                System.out.println("2) Ver Enemigos");
                 System.out.println("3) Atacar");
             }
             System.out.println("4) Objetos");
