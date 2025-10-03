@@ -3,6 +3,7 @@ import java.util.Random;
 public class Jugador {
     private String nombre;
     private int vida;
+    private int vidaMaxima;
     private int defensa;
     private int ataque;
     private int mana;
@@ -15,6 +16,7 @@ public class Jugador {
     public Jugador(String nombre, int vida, int defensa, int ataque,int mana, int experiencia, Clase rol) {
         this.nombre = nombre;
         this.vida = vida;
+        this.vidaMaxima = vida;
         this.defensa = defensa;
         this.ataque = ataque;
         this.mana = mana;
@@ -36,6 +38,10 @@ public class Jugador {
 
     public void setVida(int vida) {
         this.vida = vida;
+    }
+
+    public void setVidaMaxima(int max){
+        vidaMaxima += max;
     }
 
     public int getDefensa() {
@@ -109,7 +115,7 @@ public class Jugador {
     }
 
     public String calcularCuracion(Clase rolCurador, int mana){
-        int vidamax = (int) Math.round(rol.getMultiplicadorVida()*5);
+        int vidamax = vidaMaxima + objetoEquipado.getVidaGanada();
         int vidaSumada = (int) Math.round((5*rolCurador.getMultiplicadorVida()*mana)*0.017);
         this.vida = this.vida + vidaSumada;
         if (this.vida > vidamax) {

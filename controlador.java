@@ -512,15 +512,31 @@ public class controlador {
         enemigo5 = null;
         if (jugador1 != null) {
             jugador1.setExperiencia(40+rand.nextInt(61));
+            if (jugador1.getExperiencia()>=100) {
+                jugador1.setExperiencia(-100);
+                if (rand.nextInt(2)==1) {
+                    //setvida
+                    jugador1.setVidaMaxima(rand.nextInt(2));
+                } else {
+                    jugador1.setDefensa(jugador1.getDefensa()+rand.nextInt(2));
+                    
+                }
+                if (rand.nextInt(2)==1) {
+                    jugador1.setAtaque(jugador1.getAtaque()+rand.nextInt(2));
+                } else {
+                    jugador1.setMana(jugador1.getMana()+rand.nextInt(2));
+                }
+                
+            }
         }
         if (jugador2 != null) {
-            jugador2.setExperiencia(40+rand.nextInt(61));
+            jugador2.setExperiencia(30+rand.nextInt(51));
         }
         if (jugador3 != null) {
-            jugador3.setExperiencia(40+rand.nextInt(61));
+            jugador3.setExperiencia(30+rand.nextInt(51));
         }
         if (jugador4 != null) {
-            jugador4.setExperiencia(40+rand.nextInt(61));
+            jugador4.setExperiencia(30+rand.nextInt(51));
         }
         piso = piso+1;
         generarOleada();
