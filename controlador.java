@@ -17,8 +17,9 @@ public class controlador {
     
     private int habilidadDuplicada = 10;
     private int habilidadDuplicada2 = 17;
-
+    
     private int piso = 1;
+    private int dificultadpiso = 0;
     private boolean pisoTienda = false;
     private boolean primerPiso = true;
     
@@ -504,14 +505,14 @@ public class controlador {
 
 
     public void reiniciarPiso(){
-        int monedasGanadas = enemigo1.getMonedas()+enemigo2.getMonedas()+enemigo3.getMonedas()+enemigo4.getMonedas()+enemigo5.getMonedas();
+        monedas += enemigo1.getMonedas()+enemigo2.getMonedas()+enemigo3.getMonedas()+enemigo4.getMonedas()+enemigo5.getMonedas();
         enemigo1 = null;
         enemigo2 = null;
         enemigo3 = null;
         enemigo4 = null;
         enemigo5 = null;
         if (jugador1 != null) {
-            jugador1.setExperiencia(40+rand.nextInt(61));
+            jugador1.setExperiencia(43+rand.nextInt(51));
             if (jugador1.getExperiencia()>=100) {
                 jugador1.setExperiencia(-100);
                 if (rand.nextInt(2)==1) {
@@ -531,12 +532,60 @@ public class controlador {
         }
         if (jugador2 != null) {
             jugador2.setExperiencia(30+rand.nextInt(51));
+            if (jugador2.getExperiencia()>=100) {
+                jugador2.setExperiencia(-100);
+                if (rand.nextInt(2)==1) {
+                    //setvida
+                    jugador2.setVidaMaxima(rand.nextInt(2));
+                } else {
+                    jugador2.setDefensa(jugador2.getDefensa()+rand.nextInt(2));
+                    
+                }
+                if (rand.nextInt(2)==1) {
+                    jugador2.setAtaque(jugador2.getAtaque()+rand.nextInt(2));
+                } else {
+                    jugador2.setMana(jugador2.getMana()+rand.nextInt(2));
+                }
+                
+            }
         }
         if (jugador3 != null) {
             jugador3.setExperiencia(30+rand.nextInt(51));
+            if (jugador3.getExperiencia()>=100) {
+                jugador3.setExperiencia(-100);
+                if (rand.nextInt(2)==1) {
+                    //setvida
+                    jugador3.setVidaMaxima(rand.nextInt(2));
+                } else {
+                    jugador3.setDefensa(jugador3.getDefensa()+rand.nextInt(2));
+                    
+                }
+                if (rand.nextInt(2)==1) {
+                    jugador3.setAtaque(jugador3.getAtaque()+rand.nextInt(2));
+                } else {
+                    jugador3.setMana(jugador3.getMana()+rand.nextInt(2));
+                }
+                
+            }
         }
         if (jugador4 != null) {
             jugador4.setExperiencia(30+rand.nextInt(51));
+            if (jugador4.getExperiencia()>=100) {
+                jugador4.setExperiencia(-100);
+                if (rand.nextInt(2)==1) {
+                    //setvida
+                    jugador4.setVidaMaxima(rand.nextInt(2));
+                } else {
+                    jugador4.setDefensa(jugador4.getDefensa()+rand.nextInt(2));
+                    
+                }
+                if (rand.nextInt(2)==1) {
+                    jugador4.setAtaque(jugador4.getAtaque()+rand.nextInt(2));
+                } else {
+                    jugador4.setMana(jugador4.getMana()+rand.nextInt(2));
+                }
+                
+            }
         }
         piso = piso+1;
         generarOleada();

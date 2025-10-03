@@ -115,7 +115,14 @@ public class Jugador {
     }
 
     public String calcularCuracion(Clase rolCurador, int mana){
-        int vidamax = vidaMaxima + objetoEquipado.getVidaGanada();
+        int vidamax=0;
+        if (objetoEquipado==null) {
+            
+            vidamax = vidaMaxima;
+        }else{
+
+            vidamax = vidaMaxima + objetoEquipado.getVidaGanada();
+        }
         int vidaSumada = (int) Math.round((5*rolCurador.getMultiplicadorVida()*mana)*0.017);
         this.vida = this.vida + vidaSumada;
         if (this.vida > vidamax) {
