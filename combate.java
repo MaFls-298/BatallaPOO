@@ -35,13 +35,13 @@ public class combate {
         }
 
         // controlador.generarEquipoAleatorio();
-        //bt vercion2000
+        // bt vercion2000
 
         int opcion = 0;
 
         while (true) {
             if (control.oleadaViva) {
-                
+
             } else {
                 control.generarOleada();
             }
@@ -190,8 +190,9 @@ public class combate {
                                 System.out.println("");
                                 System.out.println("TODOS LOS JUGADORES HAN RECUPERADO SU SALUD MAXIMA");
                                 for (int j = 0; j < Jugadores; j++) {
-                                    System.out.println(control.verEquipo(j+1).getNombre());
-                                    System.out.println(control.verEquipo(j+1).calcularCuracion(control.verEquipo(j+1).getRol(), 1000));
+                                    System.out.println(control.verEquipo(j + 1).getNombre());
+                                    System.out.println(control.verEquipo(j + 1)
+                                            .calcularCuracion(control.verEquipo(j + 1).getRol(), 1000));
                                 }
                                 System.out.println("------TIENDA-------Elejir una opcion:");
                                 Objetos objeto1 = control.obtenerObjetoAleatorioPorTier();
@@ -233,17 +234,17 @@ public class combate {
                                         onjetoElejido = objeto1;
                                         coste = precio1;
                                         break;
-                                        case 2:
+                                    case 2:
                                         onjetoElejido = objeto2;
                                         coste = precio2;
-                                        
+
                                         break;
-                                        case 3:
+                                    case 3:
                                         onjetoElejido = objeto3;
                                         coste = precio3;
-                                        
+
                                         break;
-                                        case 4:
+                                    case 4:
                                         onjetoElejido = objeto4;
                                         coste = precio4;
 
@@ -278,24 +279,25 @@ public class combate {
                                         case 1:
                                             control.verEquipo(1).equiparObjeto(onjetoElejido);
                                             break;
-                                            case 2:
+                                        case 2:
                                             control.verEquipo(2).equiparObjeto(onjetoElejido);
-                                            
+
                                             break;
-                                            case 3:
+                                        case 3:
                                             control.verEquipo(3).equiparObjeto(onjetoElejido);
-                                            
+
                                             break;
-                                            case 4:
+                                        case 4:
                                             control.verEquipo(4).equiparObjeto(onjetoElejido);
-                                            
+
                                             break;
-                                    
+
                                         default:
+                                            control.verEquipo(1).equiparObjeto(onjetoElejido);
                                             break;
                                     }
 
-                                }else{
+                                } else {
                                     System.out.println("No Cuentan con suficientes monedas");
                                 }
 
@@ -304,7 +306,7 @@ public class combate {
 
                         }
                     }
-                    
+
                     control.turnoEnemigos();
                     break;
                 case 4:
