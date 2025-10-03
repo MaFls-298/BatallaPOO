@@ -117,4 +117,12 @@ public class Jugador {
         }
         return"El aliado ha recuperado:  " + vidaSumada;
     }
+
+    public void equiparObjeto(Objetos objetoN){
+        if (objetoEquipado == null) {
+            
+        }else{
+
+        }
+    }
 }

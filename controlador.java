@@ -19,11 +19,20 @@ public class controlador {
     private int habilidadDuplicada2 = 17;
 
     private int piso = 1;
+    private boolean pisoTienda = false;
+    private boolean primerPiso = true;
+    
     private int monedas = 5;    
     private Random rand = new Random();
 
     public int getMonedas(){
         return monedas;
+    }
+    public void setMonedas(int coste){
+        monedas = monedas-coste;
+    }
+    public boolean getTienda(){
+        return pisoTienda;
     }
 
     private static final String[][][] tipos = { { { "Fuego" }, { "Tierra", "Agua" }, { "Planta", "Acero" } },
@@ -246,12 +255,13 @@ public class controlador {
 
                 }
             }
-        } else if (false /* piso % 5 == 1 */) {
-            
+        } else if (!primerPiso && ((piso - 1) % 5 == 0)) {
+            System.out.println("TINDA ABIERTA");
             //TIENDA :VVVVVVVVVVVVVVVVVVVVVVVVV
-
+            pisoTienda = true;
 
         } else {
+            primerPiso = false;
             int numMon = 2 + rand.nextInt(2);
             for (int i = 0; i < 5; i++) {
 
@@ -410,7 +420,7 @@ public class controlador {
             monstruosAtacan(enemigo5.calcularAtaque(),0);
         }
 
-        if (enemigo5.getVida() <= 0 && enemigo4.getVida() <= 0 && enemigo3.getVida() <= 0 && enemigo2.getVida() <= 0 && enemigo1.getVida() <= 0) {
+        if (enemigo5.getVida() <= 0 && enemigo4.getVida() <= 0 && enemigo3.getVida() <= 0 && enemigo2.getVida() <= 0 && enemigo1.getVida() <= 0 && !(pisoTienda)) {
             reiniciarPiso();
         }
 
@@ -418,9 +428,10 @@ public class controlador {
 
     public void monstruosAtacan(int ataque, int vida){
 
-        if (rand.nextInt(101)>88 && vida > 200) {
+        if (rand.nextInt(101)>88 && vida >= 200) {
             System.out.println("El MONSTRUO HA FALLADO!!");
-        }else{
+        }else if (vida >=200) {
+
             int jugadoresActuales=0;
             boolean verificar = true;
             if (jugador1 != null) {
@@ -511,6 +522,17 @@ public class controlador {
         if (jugador4 != null) {
             jugador4.setExperiencia(40+rand.nextInt(61));
         }
+        piso = piso+1;
+        generarOleada();
+    }
+
+    public void terminarTienda(){
+        enemigo1 = null;
+        enemigo2 = null;
+        enemigo3 = null;
+        enemigo4 = null;
+        enemigo5 = null;
+        pisoTienda = false;
         piso = piso+1;
         generarOleada();
     }
