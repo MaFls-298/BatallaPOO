@@ -599,7 +599,6 @@ public class controlador {
         enemigo5 = null;
         pisoTienda = false;
         piso = piso+1;
-        generarOleada();
     }
 
 }

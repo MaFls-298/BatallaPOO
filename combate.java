@@ -50,15 +50,23 @@ public class combate {
             System.out.println("-------Menú Principal--------");
             System.out.println("1) Ver equipo");
             if (control.getTienda()) {
-                System.out.println("3) Comprar");
+                System.out.println("2) Comprar");
+                System.out.println("3) Objetos");
             } else {
                 System.out.println("2) Ver Enemigos");
                 System.out.println("3) Atacar");
+                System.out.println("4) Objetos");
             }
-            System.out.println("4) Objetos");
             System.out.print("Elige una opción: ");
-
+            
             opcion = escaner.nextInt();
+            
+            if (control.getTienda() && opcion == 2) {
+                opcion = 3;
+            } else if (control.getTienda() && opcion == 3) {
+                opcion = 4;
+            }         
+            
 
             switch (opcion) {
                 case 1:
@@ -309,7 +317,9 @@ public class combate {
                                 control.terminarTienda();
                     }
 
-                    control.turnoEnemigos();
+                    
+                        control.turnoEnemigos();
+                    
                     break;
                 case 4:
                     System.out.println("--------inventario--------");
