@@ -92,11 +92,16 @@ public class controlador {
 
     private List<Objetos> objetos = Arrays.asList(
             new Objetos("Armadura ligera", 2, 2, 0, 0, false, 1),
+            new Objetos("Toga ligera", 0, 2, 0, 2, false, 1),
             new Objetos("Espada ligera", 0, 1, 3, 0, false, 1),
             new Objetos("Varita simple", 0, 0, 2, 2, false, 1),
             new Objetos("Colgante simple", 2, 0, 0, 2, false, 1),
+            new Objetos("Guante simple", 2, 0, 0, 2, false, 1),
             new Objetos("Bufanda rota", 1, 1, 1, 1, false, 1),
+            new Objetos("Bufanda empolvada", 2, 1, 1, -1, false, 1),
             new Objetos("Gafas rotas", -2, -2, 5, 4, false, 1),
+            new Objetos("Gafas enpolvadas", 5, 4, -2, -2, false, 1),
+            new Objetos("Botella de vida", 5, 0, 0,0, false, 1),
 
             new Objetos("Armadura pesada", 2, 5, 0, 0, false, 2),
             new Objetos("Armadura maldita", -2, 5, 1, 3, false, 2),
@@ -110,11 +115,12 @@ public class controlador {
             new Objetos("Bufanda ligera", 2, 1, 2, 2, false, 2),
             new Objetos("Gafas difuntas", -6, 0, 7, 7, false, 2),
             new Objetos("Gafas ferricas", 7, 7, 0, -6, false, 2),
+            new Objetos("Botella de mana", 0, 0, 0, 8, false, 2),
 
             new Objetos("Armadura blindada", 4, 6, 0, 0, false, 3),
             new Objetos("Armadura tchk tchk", -2, 20, -4, -2, false, 3),
             new Objetos("Espada de luz", 1, 0, 5, 4, false, 3),
-            new Objetos("Espada escudo", 0, 5, 5, 0, false, 3),
+            new Objetos("Guante reforzado", 0, 5, 5, 0, false, 3),
             new Objetos("Varita tungstenica", 0, 5, 0, 5, false, 3),
             new Objetos("Varita aurora", 0, 0, 1, 9, false, 3),
             new Objetos("Colgante sanador", 9, 0, 0, 1, false, 3),
@@ -225,37 +231,39 @@ public class controlador {
                 if (enemigo1 == null) {
                     enemigo1 = new Monstruo("Jefe "+nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            10*7*(3 + rand.nextInt(4)),
-                            5*(3 + rand.nextInt(4)), 6*(3 + rand.nextInt(4)), obtenerObjetoAleatorioPorTier(),
-                            5+rand.nextInt(4));
+                            10*7*(3+dificultadpiso + rand.nextInt(4+dificultadpiso)),
+                            5*(3+dificultadpiso + rand.nextInt(4+dificultadpiso)), 6*(3+dificultadpiso + rand.nextInt(4+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
+                            5+rand.nextInt(4*(1+dificultadpiso)));
                 } else if (enemigo2 == null) {
                     enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2 +dificultadpiso+ rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo3 == null) {
                     enemigo3 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo4 == null) {
                     enemigo4 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo5 == null) {
                     enemigo5 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else {
 
                 }
             }
+            
+            dificultadpiso += 1+dificultadpiso;
         } else if (!primerPiso && ((piso - 1) % 5 == 0)) {
             System.out.println("TIENDA ABIERTA");
             //TIENDA :VVVVVVVVVVVVVVVVVVVVVVVVV
@@ -282,32 +290,32 @@ public class controlador {
                 if (enemigo1 == null) {
                     enemigo1 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
-                            rand.nextInt(2));
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
+                            rand.nextInt(3));
                 } else if (enemigo2 == null) {
                     enemigo2 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo3 == null) {
                     enemigo3 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo4 == null) {
                     enemigo4 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else if (enemigo5 == null) {
                     enemigo5 = new Monstruo(nombresMonstruos[rand.nextInt(nombresMonstruos.length)],
                             tipos[elegido][0][0],
-                            7*(2 + rand.nextInt(5)),
-                            5*(2 + rand.nextInt(5)), 4*(2 + rand.nextInt(5)), obtenerObjetoAleatorioPorTier(),
+                            7*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)),
+                            5*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), 4*(2+dificultadpiso + rand.nextInt(5+dificultadpiso)), obtenerObjetoAleatorioPorTier(),
                             rand.nextInt(2));
                 } else {
 
@@ -505,14 +513,30 @@ public class controlador {
 
 
     public void reiniciarPiso(){
-        monedas += enemigo1.getMonedas()+enemigo2.getMonedas()+enemigo3.getMonedas()+enemigo4.getMonedas()+enemigo5.getMonedas();
+        monedas += enemigo1.getMonedas()+enemigo2.getMonedas()+enemigo3.getMonedas()+enemigo4.getMonedas()+enemigo5.getMonedas()+rand.nextInt(2+dificultadpiso);
         enemigo1 = null;
         enemigo2 = null;
         enemigo3 = null;
         enemigo4 = null;
         enemigo5 = null;
+        int cantidadEXP =-2;
+        if (jugador1==null) {
+            cantidadEXP +=1;
+        }
+        if (jugador2==null) {
+            cantidadEXP +=1;
+            
+        }
+        if (jugador3==null) {
+            cantidadEXP +=1;
+            
+        }
+        if (jugador4==null) {
+            cantidadEXP +=1;
+            
+        }
         if (jugador1 != null) {
-            jugador1.setExperiencia(43+rand.nextInt(51));
+            jugador1.setExperiencia(30-(cantidadEXP*10)+rand.nextInt(51));
             if (jugador1.getExperiencia()>=100) {
                 jugador1.setExperiencia(-100);
                 if (rand.nextInt(2)==1) {
@@ -531,7 +555,7 @@ public class controlador {
             }
         }
         if (jugador2 != null) {
-            jugador2.setExperiencia(30+rand.nextInt(51));
+            jugador2.setExperiencia(30-(cantidadEXP*10)+rand.nextInt(51));
             if (jugador2.getExperiencia()>=100) {
                 jugador2.setExperiencia(-100);
                 if (rand.nextInt(2)==1) {
@@ -550,7 +574,7 @@ public class controlador {
             }
         }
         if (jugador3 != null) {
-            jugador3.setExperiencia(30+rand.nextInt(51));
+            jugador3.setExperiencia(30-(cantidadEXP*10)+rand.nextInt(51));
             if (jugador3.getExperiencia()>=100) {
                 jugador3.setExperiencia(-100);
                 if (rand.nextInt(2)==1) {
@@ -569,7 +593,7 @@ public class controlador {
             }
         }
         if (jugador4 != null) {
-            jugador4.setExperiencia(30+rand.nextInt(51));
+            jugador4.setExperiencia(30-(cantidadEXP*10)+rand.nextInt(51));
             if (jugador4.getExperiencia()>=100) {
                 jugador4.setExperiencia(-100);
                 if (rand.nextInt(2)==1) {
