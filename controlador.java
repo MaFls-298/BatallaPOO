@@ -257,7 +257,7 @@ public class controlador {
                 }
             }
         } else if (!primerPiso && ((piso - 1) % 5 == 0)) {
-            System.out.println("TIeNDA ABIERTA");
+            System.out.println("TIENDA ABIERTA");
             //TIENDA :VVVVVVVVVVVVVVVVVVVVVVVVV
             pisoTienda = true;
 

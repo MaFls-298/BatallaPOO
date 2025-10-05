@@ -217,17 +217,17 @@ public class combate {
                                         + objeto2.getVidaGanada() + " Ataque: " + objeto2.getAtaqueGanado()
                                         + " Defensa: " + objeto2.getDefensaGanada() + " Mana: "
                                         + objeto2.getManaGanado() + " Rareza: " + objeto2.getRareza() + " Precio: "
-                                        + objeto2.getRareza() * objeto2.getRareza());
+                                        + precio2);
                                 System.out.println("      3) " + objeto3.getNombre() + " Vida: "
                                         + objeto3.getVidaGanada() + " Ataque: " + objeto3.getAtaqueGanado()
                                         + " Defensa: " + objeto3.getDefensaGanada() + " Mana: "
                                         + objeto3.getManaGanado() + " Rareza: " + objeto3.getRareza() + " Precio: "
-                                        + objeto3.getRareza() * objeto3.getRareza());
+                                        + precio3);
                                 System.out.println("      4) " + objeto4.getNombre() + " Vida: "
                                         + objeto4.getVidaGanada() + " Ataque: " + objeto4.getAtaqueGanado()
                                         + " Defensa: " + objeto4.getDefensaGanada() + " Mana: "
                                         + objeto4.getManaGanado() + " Rareza: " + objeto4.getRareza() + " Precio: "
-                                        + objeto4.getRareza() * objeto4.getRareza());
+                                        + precio4);
                                 System.out.println("      5) Saltar Tienda");
 
                                 System.out.print("  Elige una opción: ");
@@ -314,6 +314,38 @@ public class combate {
                 case 4:
                     System.out.println("--------inventario--------");
                     System.out.println("Monedas: " + control.getMonedas());
+                    if (control.verEquipo(1) != null && control.verEquipo(1).getObjeto() != null) {
+                        System.out.println("    "+control.verEquipo(1).getNombre());
+                        System.out.println("Nombre: "+control.verEquipo(1).getObjeto().getNombre() + " +Vida: " +
+                        control.verEquipo(1).getObjeto().getVidaGanada()+ " +Ataque: "+
+                        control.verEquipo(1).getObjeto().getAtaqueGanado() + " +Defensa: "+
+                        control.verEquipo(1).getObjeto().getDefensaGanada() + " +Mana: " +
+                        control.verEquipo(1).getObjeto().getManaGanado());
+                    }
+                    if (control.verEquipo(2) != null && control.verEquipo(2).getObjeto() != null) {
+                        System.out.println("    "+control.verEquipo(2).getNombre());
+                        System.out.println("Nombre: "+control.verEquipo(2).getObjeto().getNombre() + " +Vida: " +
+                        control.verEquipo(2).getObjeto().getVidaGanada()+ " +Ataque: "+
+                        control.verEquipo(2).getObjeto().getAtaqueGanado() + " +Defensa: "+
+                        control.verEquipo(2).getObjeto().getDefensaGanada() + " +Mana: " +
+                        control.verEquipo(2).getObjeto().getManaGanado());
+                    }
+                    if (control.verEquipo(3) != null && control.verEquipo(3).getObjeto() != null) {
+                        System.out.println("    "+control.verEquipo(3).getNombre());
+                        System.out.println("Nombre: "+control.verEquipo(3).getObjeto().getNombre() + " +Vida: " +
+                        control.verEquipo(3).getObjeto().getVidaGanada()+ " +Ataque: "+
+                        control.verEquipo(3).getObjeto().getAtaqueGanado() + " +Defensa: "+
+                        control.verEquipo(3).getObjeto().getDefensaGanada() + " +Mana: " +
+                        control.verEquipo(3).getObjeto().getManaGanado());
+                    }
+                    if (control.verEquipo(4) != null && control.verEquipo(4).getObjeto() != null) {
+                        System.out.println("    "+control.verEquipo(4).getNombre());
+                        System.out.println("Nombre: "+control.verEquipo(4).getObjeto().getNombre() + " +Vida: " +
+                        control.verEquipo(4).getObjeto().getVidaGanada()+ " +Ataque: "+
+                        control.verEquipo(4).getObjeto().getAtaqueGanado() + " +Defensa: "+
+                        control.verEquipo(4).getObjeto().getDefensaGanada() + " +Mana: " +
+                        control.verEquipo(4).getObjeto().getManaGanado());
+                    }
                     break;
                 default:
                     System.out.println("Opción inválida.");

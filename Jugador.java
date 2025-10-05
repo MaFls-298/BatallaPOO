@@ -27,6 +27,9 @@ public class Jugador {
     public String getNombre() {
         return nombre;
     }
+    public Objetos getObjeto() {
+        return objetoEquipado;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
