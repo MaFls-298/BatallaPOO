@@ -187,7 +187,12 @@ public class combate {
 
                             } else {
 
-                                System.out.println("");
+                                
+                            }
+
+                        }
+                    }else{
+                        System.out.println("");
                                 System.out.println("TODOS LOS JUGADORES HAN RECUPERADO SU SALUD MAXIMA");
                                 for (int j = 0; j < Jugadores; j++) {
                                     System.out.println(control.verEquipo(j + 1).getNombre());
@@ -302,9 +307,6 @@ public class combate {
                                 }
 
                                 control.terminarTienda();
-                            }
-
-                        }
                     }
 
                     control.turnoEnemigos();
