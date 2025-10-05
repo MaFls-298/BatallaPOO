@@ -146,7 +146,7 @@ public class controlador {
             if (havilidadganada == habilidadDuplicada || havilidadganada == habilidadDuplicada2) {
                 havilidadganada = rand.nextInt(habilidades.size());
             }
-            habilidadesPlayer.addLast(habilidades.get(havilidadganada));
+            habilidadesPlayer.add(habilidades.get(havilidadganada));
             habilidadDuplicada2 = habilidadDuplicada;
             habilidadDuplicada = havilidadganada;
         }
