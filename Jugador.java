@@ -135,13 +135,13 @@ public class Jugador {
     }
 
     public void equiparObjeto(Objetos objetoN){
-        if (objetoEquipado == null) {
-            vida = vida - 2*(objetoEquipado.getVidaGanada());
+        if (objetoEquipado != null) {
+            vidaMaxima = vidaMaxima - 2*(objetoEquipado.getVidaGanada());
             defensa = defensa - 2*(objetoEquipado.getDefensaGanada());
             ataque = ataque - 2*(objetoEquipado.getAtaqueGanado());
             mana = mana - 2*(objetoEquipado.getManaGanado());
         }
-        vida = vida + 2*(objetoN.getVidaGanada());
+        vidaMaxima = vidaMaxima + 2*(objetoN.getVidaGanada());
         defensa = defensa + 2*(objetoN.getDefensaGanada());
         ataque = ataque + 2*(objetoN.getAtaqueGanado());
         mana = mana + 2*(objetoN.getManaGanado());
