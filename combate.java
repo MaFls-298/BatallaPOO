@@ -314,11 +314,17 @@ public class combate {
                                     System.out.println("No Cuentan con suficientes monedas");
                                 }
 
-                                control.terminarTienda();
+                                
                     }
 
-                    
-                        control.turnoEnemigos();
+                        if (!control.getTienda()) {
+                            
+                            control.turnoEnemigos();
+                        }else{
+
+                            control.terminarTienda();
+                        }
+
                     
                     break;
                 case 4:

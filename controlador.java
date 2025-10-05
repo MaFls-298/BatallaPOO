@@ -126,7 +126,7 @@ public class controlador {
 
     private String[] nombresClases = { "Mago", "Caballero", "Ladron", "Gladeador", "Curandero", "brujo" };
     private int[] vidaClases = { 3, 7, 5, 10, 8, 5 };
-    private int[] dañoClases = { 8, 7, 9, 3, 5, 7 };
+    private int[] dañoClases = { 80, 70, 90, 30, 50, 70 };
     private int[] defensaClases = { 3, 7, 5, 10, 3, 3 };
     private int[] manaClases = { 10, 3, 5, 1, 8, 9 };
 
@@ -599,6 +599,7 @@ public class controlador {
         enemigo5 = null;
         pisoTienda = false;
         piso = piso+1;
+        generarOleada();
     }
 
 }
