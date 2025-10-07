@@ -204,115 +204,117 @@ public class combate {
                                 System.out.println("TODOS LOS JUGADORES HAN RECUPERADO SU SALUD MAXIMA");
                                 for (int j = 0; j < Jugadores; j++) {
                                     System.out.println(control.verEquipo(j + 1).getNombre());
-                                    System.out.println(control.verEquipo(j + 1)
-                                            .calcularCuracion(control.verEquipo(j + 1).getRol(), 1000));
+                                    System.out.println(control.verEquipo(j + 1).calcularCuracion(control.verEquipo(j + 1).getRol(), 1000));
                                 }
-                                System.out.println("------TIENDA-------Elejir una opcion:");
-                                Objetos objeto1 = control.obtenerObjetoAleatorioPorTier();
-                                int precio1 = ((1 + rand.nextInt(3)) * 5) * objeto1.getRareza() * objeto1.getRareza();
-                                Objetos objeto2 = control.obtenerObjetoAleatorioPorTier();
-                                int precio2 = ((1 + rand.nextInt(3)) * 5) * objeto2.getRareza() * objeto2.getRareza();
-                                Objetos objeto3 = control.obtenerObjetoAleatorioPorTier();
-                                int precio3 = ((1 + rand.nextInt(3)) * 5) * objeto3.getRareza() * objeto3.getRareza();
-                                Objetos objeto4 = control.obtenerObjetoAleatorioPorTier();
-                                int precio4 = ((1 + rand.nextInt(3)) * 5) * objeto3.getRareza() * objeto4.getRareza();
-                                System.out.println("      1) " + objeto1.getNombre() + " Vida: "
-                                        + objeto1.getVidaGanada() + " Ataque: " + objeto1.getAtaqueGanado()
-                                        + " Defensa: " + objeto1.getDefensaGanada() + " Mana: "
-                                        + objeto1.getManaGanado() + " Rareza: " + objeto1.getRareza() + " Precio: "
-                                        + precio1);
-                                System.out.println("      2) " + objeto2.getNombre() + " Vida: "
-                                        + objeto2.getVidaGanada() + " Ataque: " + objeto2.getAtaqueGanado()
-                                        + " Defensa: " + objeto2.getDefensaGanada() + " Mana: "
-                                        + objeto2.getManaGanado() + " Rareza: " + objeto2.getRareza() + " Precio: "
-                                        + precio2);
-                                System.out.println("      3) " + objeto3.getNombre() + " Vida: "
-                                        + objeto3.getVidaGanada() + " Ataque: " + objeto3.getAtaqueGanado()
-                                        + " Defensa: " + objeto3.getDefensaGanada() + " Mana: "
-                                        + objeto3.getManaGanado() + " Rareza: " + objeto3.getRareza() + " Precio: "
-                                        + precio3);
-                                System.out.println("      4) " + objeto4.getNombre() + " Vida: "
-                                        + objeto4.getVidaGanada() + " Ataque: " + objeto4.getAtaqueGanado()
-                                        + " Defensa: " + objeto4.getDefensaGanada() + " Mana: "
-                                        + objeto4.getManaGanado() + " Rareza: " + objeto4.getRareza() + " Precio: "
-                                        + precio4);
-                                System.out.println("      5) Saltar Tienda");
-
-                                System.out.print("  Elige una opción: ");
-                                int objetivoAtaque = escaner.nextInt();
-                                int coste = 0;
-                                Objetos onjetoElejido = null;
-                                switch (objetivoAtaque) {
-                                    case 1:
-                                        onjetoElejido = objeto1;
-                                        coste = precio1;
-                                        break;
-                                    case 2:
-                                        onjetoElejido = objeto2;
-                                        coste = precio2;
-
-                                        break;
-                                    case 3:
-                                        onjetoElejido = objeto3;
-                                        coste = precio3;
-
-                                        break;
-                                    case 4:
-                                        onjetoElejido = objeto4;
-                                        coste = precio4;
-
-                                        break;
-
-                                    default:
-                                        break;
+                                for (int i = 0; i < Jugadores; i++) {
+                                    
+                                    System.out.println("------TIENDAv"+i+" de: "+Jugadores+"-------Elejir una opcion:");
+                                    Objetos objeto1 = control.obtenerObjetoAleatorioPorTier();
+                                    Objetos objeto2 = control.obtenerObjetoAleatorioPorTier();
+                                    Objetos objeto3 = control.obtenerObjetoAleatorioPorTier();
+                                    Objetos objeto4 = control.obtenerObjetoAleatorioPorTier();
+                                    int precio1 = 3+(objeto1.getRareza()*5) + (int) Math.round((objeto1.getRareza()*9)*((5+rand.nextInt(10))*0.1));
+                                    int precio2 = 3+(objeto2.getRareza()*5) + (int) Math.round((objeto2.getRareza()*9)*((5+rand.nextInt(10))*0.1));
+                                    int precio3 = 3+(objeto3.getRareza()*5) + (int) Math.round((objeto3.getRareza()*9)*((5+rand.nextInt(10))*0.1));
+                                    int precio4 = 3+(objeto4.getRareza()*5) + (int) Math.round((objeto4.getRareza()*9)*((5+rand.nextInt(10))*0.1));
+                                    System.out.println("      1) " + objeto1.getNombre() + " Vida: "
+                                            + objeto1.getVidaGanada() + " Ataque: " + objeto1.getAtaqueGanado()
+                                            + " Defensa: " + objeto1.getDefensaGanada() + " Mana: "
+                                            + objeto1.getManaGanado() + " Rareza: " + objeto1.getRareza() + " Precio: "
+                                            + precio1);
+                                            System.out.println("      2) " + objeto2.getNombre() + " Vida: "
+                                                    + objeto2.getVidaGanada() + " Ataque: " + objeto2.getAtaqueGanado()
+                                                    + " Defensa: " + objeto2.getDefensaGanada() + " Mana: "
+                                                    + objeto2.getManaGanado() + " Rareza: " + objeto2.getRareza() + " Precio: "
+                                                    + precio2);
+                                            System.out.println("      3) " + objeto3.getNombre() + " Vida: "
+                                                    + objeto3.getVidaGanada() + " Ataque: " + objeto3.getAtaqueGanado()
+                                                    + " Defensa: " + objeto3.getDefensaGanada() + " Mana: "
+                                                    + objeto3.getManaGanado() + " Rareza: " + objeto3.getRareza() + " Precio: "
+                                                    + precio3);
+                                            System.out.println("      4) " + objeto4.getNombre() + " Vida: "
+                                                    + objeto4.getVidaGanada() + " Ataque: " + objeto4.getAtaqueGanado()
+                                                    + " Defensa: " + objeto4.getDefensaGanada() + " Mana: "
+                                                    + objeto4.getManaGanado() + " Rareza: " + objeto4.getRareza() + " Precio: "
+                                                    + precio4);
+                                            System.out.println("      5) Saltar Tienda");
+                                            System.out.print("  Elige una opción: ");
+                                            int objetivoAtaque = escaner.nextInt();
+                                            int coste = 0;
+                                            Objetos onjetoElejido = null;
+                                            switch (objetivoAtaque) {
+                                                case 1:
+                                                    onjetoElejido = objeto1;
+                                                    coste = precio1;
+                                                    break;
+                                                case 2:
+                                                    onjetoElejido = objeto2;
+                                                    coste = precio2;
+            
+                                                    break;
+                                                case 3:
+                                                    onjetoElejido = objeto3;
+                                                    coste = precio3;
+            
+                                                    break;
+                                                case 4:
+                                                    onjetoElejido = objeto4;
+                                                    coste = precio4;
+            
+                                                    break;
+            
+                                                default:
+                                                    break;
+                                            }
+                                            if (objetivoAtaque > 5 || objetivoAtaque < 0) {
+                                                System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 4");
+                                                break;
+                                            } else if (objetivoAtaque == 5) {
+            
+                                            } else if (control.getMonedas() >= coste) {
+                                                control.setMonedas(coste);
+                                                System.out.println("------Equipar a Jugador-------:");
+                                                if (control.verEquipo(1) != null) {
+                                                    System.out.println("    1) " + control.verEquipo(1).getNombre());
+                                                }
+                                                if (control.verEquipo(2) != null) {
+                                                    System.out.println("    2) " + control.verEquipo(2).getNombre());
+                                                }
+                                                if (control.verEquipo(3) != null) {
+                                                    System.out.println("    3) " + control.verEquipo(3).getNombre());
+                                                }
+                                                if (control.verEquipo(4) != null) {
+                                                    System.out.println("    4) " + control.verEquipo(4).getNombre());
+                                                }
+                                                System.out.print("  Elige una opción: ");
+                                                int objetivo = escaner.nextInt();
+                                                switch (objetivo) {
+                                                    case 1:
+                                                        control.verEquipo(1).equiparObjeto(onjetoElejido);
+                                                        break;
+                                                    case 2:
+                                                        control.verEquipo(2).equiparObjeto(onjetoElejido);
+            
+                                                        break;
+                                                    case 3:
+                                                        control.verEquipo(3).equiparObjeto(onjetoElejido);
+            
+                                                        break;
+                                                    case 4:
+                                                        control.verEquipo(4).equiparObjeto(onjetoElejido);
+            
+                                                        break;
+            
+                                                    default:
+                                                        control.verEquipo(1).equiparObjeto(onjetoElejido);
+                                                        break;
+                                                }
+            
+                                            } else {
+                                                System.out.println("No Cuentan con suficientes monedas");
+                                            }
                                 }
-                                if (objetivoAtaque > 5 || objetivoAtaque < 0) {
-                                    System.out.println("ERROR ELIJA UN NUMERO DEL 1 AL 4");
-                                    break;
-                                } else if (objetivoAtaque == 5) {
 
-                                } else if (control.getMonedas() >= coste) {
-                                    control.setMonedas(coste);
-                                    System.out.println("------Equipar a Jugador-------:");
-                                    if (control.verEquipo(1) != null) {
-                                        System.out.println("    1) " + control.verEquipo(1).getNombre());
-                                    }
-                                    if (control.verEquipo(2) != null) {
-                                        System.out.println("    2) " + control.verEquipo(2).getNombre());
-                                    }
-                                    if (control.verEquipo(3) != null) {
-                                        System.out.println("    3) " + control.verEquipo(3).getNombre());
-                                    }
-                                    if (control.verEquipo(4) != null) {
-                                        System.out.println("    4) " + control.verEquipo(4).getNombre());
-                                    }
-                                    System.out.print("  Elige una opción: ");
-                                    int objetivo = escaner.nextInt();
-                                    switch (objetivo) {
-                                        case 1:
-                                            control.verEquipo(1).equiparObjeto(onjetoElejido);
-                                            break;
-                                        case 2:
-                                            control.verEquipo(2).equiparObjeto(onjetoElejido);
-
-                                            break;
-                                        case 3:
-                                            control.verEquipo(3).equiparObjeto(onjetoElejido);
-
-                                            break;
-                                        case 4:
-                                            control.verEquipo(4).equiparObjeto(onjetoElejido);
-
-                                            break;
-
-                                        default:
-                                            control.verEquipo(1).equiparObjeto(onjetoElejido);
-                                            break;
-                                    }
-
-                                } else {
-                                    System.out.println("No Cuentan con suficientes monedas");
-                                }
 
                                 
                     }
